@@ -2,17 +2,16 @@ import React from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-const ExchangeRates = () => (
-  <Query
-    query={gql`
-      {
-        rates(currency: "USD") {
-          currency
-          rate
-        }
-      }`
+const CORRENCY = gql`
+  {
+    rates(currency: "USD") {
+      currency
+      rate
     }
-  >
+  }`
+
+const ExchangeRates = () => (
+  <Query query={CORRENCY}>
     {
       ({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;

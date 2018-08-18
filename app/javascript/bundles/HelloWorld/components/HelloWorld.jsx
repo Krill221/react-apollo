@@ -2,19 +2,20 @@ import React from 'react';
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag"
+import DogPhoto from "./DogPhoto"
+import Dogs from "./Dogs"
 
-import ExchangeRates from "./ExchangeRates"
 
 
 
 const client = new ApolloClient({
-  uri: "https://w5xlvm3vzz.lp.gql.zone/graphql"
+  uri: "http://0.0.0.0:3000/graphql"
 });
 
 
 const HelloWorld = () => (
   <ApolloProvider client={client}>
-      <ExchangeRates />
+    <Dogs />
   </ApolloProvider>
 )
 
