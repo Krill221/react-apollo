@@ -7,7 +7,9 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :dog, Types::DogType do
     argument :breed, !types.String
-    resolve -> (obj, args, ctx) { Dog.where(:breed => args[:breed]).first }
+    resolve -> (obj, args, ctx) {
+       Dog.where(:breed => args[:breed]).first
+    }
   end
 
 end
