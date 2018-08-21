@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query } from "react-apollo";
-import { ADD_TODO, GET_DOGS, GET_DOG_PHOTO } from "../queries";
+import { GET_DOG_PHOTO } from "../queries";
 
 
 const DogPhoto = ({ breed }) => (

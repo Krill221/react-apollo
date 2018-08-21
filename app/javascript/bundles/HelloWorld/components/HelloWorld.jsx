@@ -2,6 +2,7 @@ import React from 'react';
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag"
+import DogsSelect from "./DogsSelect"
 import Dogs from "./Dogs"
 import DogPhoto from "./DogPhoto"
 import AddDog from "./AddDog"
@@ -21,12 +22,15 @@ class HelloWorld extends React.Component {
     this.setState(() => ({ selectedDog: target.value }));
   };
 
+  //<DogsSelect onDogSelected={this.onDogSelected} />
+  //<DogPhoto breed={this.state.selectedDog} />
+
   render() {
     return (
         <ApolloProvider client={client}>
           <AddDog />
-          <Dogs onDogSelected={this.onDogSelected} />
-          <DogPhoto breed={this.state.selectedDog} />
+          <hr />
+          <Dogs />
         </ApolloProvider>
       )
   }

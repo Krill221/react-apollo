@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mutation } from "react-apollo";
-import { ADD_TODO, GET_DOGS, GET_DOG_PHOTO } from "../queries";
+import { ADD_DOG, GET_DOGS, GET_DOG_PHOTO } from "../queries";
 
 
 const AddDog = () => {
@@ -9,14 +9,13 @@ const AddDog = () => {
 
   return (
     <Mutation
-      mutation={ADD_TODO}
+      mutation={ADD_DOG}
       update={(cache, { data: { addDog } }) => {
         const { dogs } = cache.readQuery({ query: GET_DOGS });
-        /*cache.writeQuery({
+        cache.writeQuery({
           query: GET_DOGS,
           data: { dogs: dogs.concat([addDog]) }
         });
-        */
       }}
     >
       {addDog => (

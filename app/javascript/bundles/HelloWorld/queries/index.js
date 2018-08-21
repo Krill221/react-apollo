@@ -1,7 +1,20 @@
 import gql from "graphql-tag";
 
 
-export const ADD_TODO = gql`
+export const UPDATE_DOG = gql`
+  mutation updateDog($id: String!, $breed: String!, $displayimage: String!) {
+    updateDog(input: {id: $id, breed: $breed, displayimage: $displayimage}){
+      dog {
+        id
+        breed
+        displayimage
+      }
+    }
+  }
+  `;
+
+
+export const ADD_DOG = gql`
   mutation addDog($breed: String!, $displayimage: String!) {
     addDog(input: {breed: $breed, displayimage: $displayimage}){
       id
