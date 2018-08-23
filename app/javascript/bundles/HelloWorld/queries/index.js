@@ -30,6 +30,7 @@ export const GET_DOG_PHOTO = gql`
     dog(breed: $breed) {
       id
       displayimage
+      isLiked @client
     }
   }
 `;

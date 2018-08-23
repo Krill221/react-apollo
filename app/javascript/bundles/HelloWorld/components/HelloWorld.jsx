@@ -2,16 +2,18 @@ import React from 'react';
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag"
-import DogsSelect from "./DogsSelect"
-import Dogs from "./Dogs"
-import DogPhoto from "./DogPhoto"
-import AddDog from "./AddDog"
+import SimpleDogs from "./SimpleDogs"
+import { defaults, resolvers } from "../local_resolvers";
 
 
 
 
 const client = new ApolloClient({
-  uri: "http://0.0.0.0:3000/graphql"
+  uri: "http://0.0.0.0:3000/graphql",
+  clientState: {
+    defaults: defaults,
+    resolvers: resolvers
+  }
 });
 
 
@@ -28,9 +30,7 @@ class HelloWorld extends React.Component {
   render() {
     return (
         <ApolloProvider client={client}>
-          <AddDog />
-          <hr />
-          <Dogs />
+          <SimpleDogs />
         </ApolloProvider>
       )
   }
