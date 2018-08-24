@@ -51,5 +51,4 @@ const Dogs = () => (
     }}
   </Query>
 );
-
 export default Dogs

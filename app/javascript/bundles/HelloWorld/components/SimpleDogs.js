@@ -1,6 +1,8 @@
 import React from 'react';
 import { Query, Mutation } from "react-apollo";
-import { GET_DOGS, UPDATE_DOG } from "../queries";
+import { GET_DOGS } from "../queries";
+import { Dog } from "./Dog";
+
 
 
 const SimpleDogs = () => (
@@ -9,14 +11,10 @@ const SimpleDogs = () => (
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
 
-
-      console.log(data);
       return <div>
-        {data.dogs.map( (dog) => ( <div key={dog.id} >
-                  <p>{dog.id} {dog.breed} -{dog.isLiked}-</p>
-                  <hr />
-            </div>
-          ))}
+        {data.dogs.map( (dog) => (
+          <Dog key={dog.id} {...dog} />
+        ))}
       </div>
     }}
   </Query>
