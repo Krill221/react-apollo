@@ -2,6 +2,7 @@ Types::QueryType = GraphQL::ObjectType.define do
   name 'Query'
 
   field :dogs, !types[Types::DogType] do
+    sleep 1.5
     resolve -> (obj, args, ctx) { Dog.all }
   end
 

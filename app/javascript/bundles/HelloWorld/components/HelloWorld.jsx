@@ -3,33 +3,9 @@ import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag"
 import SimpleDogs from "./SimpleDogs"
-
-export const typeDefs = `
-
-`;
+import {resolvers, defaults} from "../resolvers"
 
 
-const defaults = {
-  isLiked: "SAA"
-};
-
-
-const resolvers = {
-  Mutation: {
-    toggleDog: (_, variables, { cache, getCacheKey }) => {
-        const id = getCacheKey({ __typename: 'Dog', id: variables.id })
-        const fragment = gql`
-          fragment currentDog on Dog {
-            isLiked
-          }
-        `;
-        const dog = cache.readFragment({ fragment, id })
-        const data = { ...dog, isLiked: variables.isLiked };
-        cache.writeData({ id, data });
-        return null;
-    }
-  }
-};
 
 
 
@@ -44,13 +20,6 @@ const client = new ApolloClient({
 
 class HelloWorld extends React.Component {
   state = { selectedDog: null };
-
-  onDogSelected = ({ target }) => {
-    this.setState(() => ({ selectedDog: target.value }));
-  };
-
-  //<DogsSelect onDogSelected={this.onDogSelected} />
-  //<DogPhoto breed={this.state.selectedDog} />
 
   render() {
     return (
